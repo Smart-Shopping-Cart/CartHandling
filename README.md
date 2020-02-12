@@ -1,4 +1,5 @@
-# SmartCart
+# SmartCart #
+
 this document describe our final project
 
 our team:
@@ -7,4 +8,12 @@ our team:
 - Yonatan Shemesh 
 - Aviram Piletzki
 
-# Discription
+# Discription #
+
+## Tecnologies ##
+#### BackEnd ####
+- `java `
+- `Python`
+#### Camera ####
+#### FrontEnd ####
+#### 3Party ####
