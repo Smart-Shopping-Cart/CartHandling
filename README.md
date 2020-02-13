@@ -11,9 +11,10 @@ our team:
 # Discription #
 
 ## Tecnologies ##
+- project managing `ClickUp`
 #### BackEnd ####
 - `java `
 - `Python`
 #### Camera ####
 #### FrontEnd ####
-#### 3Party ####
+#### 3rdParty's ####
