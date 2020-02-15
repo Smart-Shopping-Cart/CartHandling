@@ -1,6 +1,6 @@
 orbs:
   maven: circleci/maven@0.0.12
-  heroku: circleci/heroku@x.y
+  heroku: circleci/heroku@1.0.1
 version: 2.1
 workflows:
   heroku_deploy:
