@@ -5,11 +5,11 @@ orbs:
  heroku: circleci/heroku@x.y 
 workflows: 
  heroku_deploy: 
-  jobs: 
+  jobs:
    - build
-   - heroku/deploy-via-git:
-    requires:
+   - heroku/deploy-via-git: 
+     requires:
      - build 
-    filters: 
-     branches: 
-      only: master
+     filters: 
+      branches: 
+       only: master
