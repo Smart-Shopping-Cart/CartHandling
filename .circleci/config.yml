@@ -3,13 +3,13 @@ version: 2.1
 orbs:
  maven: circleci/maven@0.0.12
  heroku: circleci/heroku@x.y 
-workflows:
- heroku_deploy:
-  jobs:
+workflows: 
+ heroku_deploy: 
+  jobs: 
    - build
    - heroku/deploy-via-git
-    requires:
+    requires: 
      - build 
-    filters:
-     branches:
+    filters: 
+     branches: 
       only: master
