@@ -2,7 +2,32 @@ orbs:
   maven: circleci/maven@0.0.12
   heroku: circleci/heroku@1.0.1
 version: 2.1
+jobs:
+ herokuDeployTest:
+  executor: heroku/default
+  environment:
+   HEROKU_APP_NAME: "smart-cart-test"
+  steps:
+   - checkout
+   - heroku/install
+   - heroku/deploy-via-git
+ herokuDeploy:
+  executor: heroku/default
+  environment:
+   HEROKU_APP_NAME: "smart--cart"
+  steps:
+   - checkout
+   - heroku/install
+   - heroku/deploy-via-git
 workflows:
-  heroku_deploy:
-    jobs:
-      - heroku/deploy-via-git
+ version: 2
+ heroku_deploy:
+  jobs:
+   - herokuDeploy:
+          filters:
+            branches:
+              only: master
+   - herokuDeployTest:
+          filters:
+            branches:
+              ignore: master
