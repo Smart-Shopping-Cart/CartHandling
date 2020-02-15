@@ -12,9 +12,14 @@ our team:
 
 ## Tecnologies ##
 - project managing `ClickUp`
+- ci/cd `CircleCi`+`Heroku`
 #### BackEnd ####
 - `java `
 - `Python`
 #### Camera ####
 #### FrontEnd ####
-#### 3rdParty's ####
+#### Libraries ####
+- `Maven`
+- `Spring`
+- `SpringBoot`
+- `Pythorch`
