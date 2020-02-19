@@ -6,7 +6,7 @@ jobs:
  herokuDeployTest:
   executor: heroku/default
   environment:
-   HEROKU_APP_NAME: "smart-cart-test"
+   HEROKU_APP_NAME: "cart-handling-test"
   steps:
    - checkout
    - heroku/install
@@ -14,7 +14,7 @@ jobs:
  herokuDeploy:
   executor: heroku/default
   environment:
-   HEROKU_APP_NAME: "smart--cart"
+   HEROKU_APP_NAME: "cart-handling"
   steps:
    - checkout
    - heroku/install
