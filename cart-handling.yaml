@@ -1,0 +1,315 @@
+openapi: 3.0.0
+info:
+  description: This is an API for the CartHandling's server
+  version: "1.0"
+  title: Smart cart
+  license:
+    name: Apache 2.0
+    url: http://www.apache.org/licenses/LICENSE-2.0.html
+tags:
+  - name: User
+  - name: Cart
+paths:
+  /login:
+    post:
+      tags:
+        - User
+      summary: User Login
+      operationId: login
+      description: >
+        Verify the data entered by passing on the AllUser's DB and add the user
+        to onlineUser's DB
+      requestBody:
+        $ref: "#/components/requestBodies/user"
+      responses:
+        "200":
+          description: login successful
+          content:
+            "*/*":
+              schema:
+                type: string
+        "400":
+          description: User does not exist
+  /logout:
+    post:
+      tags:
+        - User
+      summary: User logout
+      operationId: logout
+      description: |
+        remove from the OnlineUser's DB
+      parameters:
+        - in: header
+          name: Authorization
+          schema:
+            type: string
+      responses:
+        "200":
+          description: logout  successful
+        "400":
+          description: logout unsuccessful
+  /signUp:
+    post:
+      tags:
+        - User
+      summary: add new user
+      operationId: signUp
+      description: |
+        add the user to onlineUser's DB and also add to AllUser's DB
+      requestBody:
+        $ref: "#/components/requestBodies/user"
+      responses:
+        "201":
+          description: register successful
+        "400":
+          description: register unsuccessful
+  /products:
+    post:
+      tags:
+        - Cart
+      summary: show all products
+      operationId: getAllProducts
+      description: |
+        return all the products in the system
+      parameters:
+        - in: header
+          name: Authorization
+          schema:
+            type: string
+      responses:
+        "200":
+          description: successful
+          content:
+            "*/*":
+              schema:
+                type: array
+                items:
+                  $ref: "#/components/schemas/product"
+        "400":
+          description: unsuccessful
+  "/getProduct/{productId}":
+    post:
+      tags:
+        - Cart
+      summary: get detail on specific product
+      operationId: getProduct
+      description: ""
+      parameters:
+        - in: path
+          name: productId
+          required: true
+          schema:
+            type: string
+        - in: header
+          name: Authorization
+          schema:
+            type: string
+      responses:
+        "200":
+          description: The product exist in the specific cart
+          content:
+            "*/*":
+              schema:
+                $ref: "#/components/schemas/product"
+        "400":
+          description: bad input parameter
+  "/bind/{cameraIp}":
+    post:
+      tags:
+        - Cart
+      summary: Active cart
+      operationId: bind
+      description: |
+        bind the new cart to the server
+      parameters:
+        - in: path
+          name: cameraIp
+          required: true
+          schema:
+            type: string
+        - in: header
+          name: Authorization
+          schema:
+            type: string
+      responses:
+        "201":
+          description: binding successful
+          content:
+            "*/*":
+              schema:
+                type: string
+        "400":
+          description: binding unsuccessful
+  /unbind:
+    post:
+      tags:
+        - Cart
+      summary: inactive cart
+      operationId: unbind
+      description: |
+        unbind the cart
+      parameters:
+        - in: header
+          name: Authorization
+          schema:
+            type: string
+      responses:
+        "200":
+          description: unbinding successful
+          content:
+            "*/*":
+              schema:
+                type: string
+        "400":
+          description: unbinding unsuccessful
+  "/addProduct/{cameraId}":
+    post:
+      tags:
+        - Cart
+      summary: add product to specific cart
+      operationId: addProduct
+      description: |
+        add Product to specific cart
+      parameters:
+        - in: path
+          name: cameraId
+          required: true
+          schema:
+            type: string
+        - in: path
+          name: productId
+          required: true
+          schema:
+            type: string
+      responses:
+        "200":
+          description: product add successful
+        "400":
+          description: product add unsuccessful
+  "/removeProduct/{cameraId}":
+    post:
+      tags:
+        - Cart
+      summary: remove product to specific cart
+      operationId: removeProduct
+      description: |
+        remove Product to specific cart
+      parameters:
+        - in: path
+          name: cameraId
+          required: true
+          schema:
+            type: string
+        - in: path
+          name: productId
+          required: true
+          schema:
+            type: string
+      responses:
+        "200":
+          description: product remove successful
+        "400":
+          description: product remove unsuccessful
+  /getShoppingCart:
+    post:
+      tags:
+        - Cart
+      summary: return all the detail about the specific cart
+      operationId: getShoppingCart
+      description: |
+        return all the detail about the specific cart
+      parameters:
+        - in: header
+          name: Authorization
+          schema:
+            type: string
+      responses:
+        "200":
+          description: successful
+          content:
+            "*/*":
+              schema:
+                $ref: "#/components/schemas/cart"
+        "400":
+          description: bad input parameter
+servers:
+  - url: https://cart-handling.herokuapp.com
+components:
+  requestBodies:
+    user:
+      content:
+        application/json:
+          schema:
+            $ref: "#/components/schemas/user"
+      required: true
+    token:
+      content:
+        application/json:
+          schema:
+            $ref: "#/components/schemas/token"
+      required: true
+  schemas:
+    user:
+      type: object
+      properties:
+        name:
+          type: string
+        password:
+          type: string
+        id:
+          type: string
+    token:
+      type: object
+      properties:
+        userId:
+          type: string
+        customerId:
+          type: string
+        creationDate:
+          type: string
+        shoppingDate:
+          type: string
+    camera:
+      type: object
+      properties:
+        id:
+          type: string
+        ip:
+          type: string
+    product:
+      type: object
+      properties:
+        id:
+          type: string
+        price:
+          type: string
+    cart:
+      type: object
+      properties:
+        cartId:
+          type: string
+        products:
+          type: array
+          items:
+            $ref: "#/components/schemas/product"
+        totalPrice:
+          type: string
+        id:
+          type: string
+    customer:
+      type: object
+      properties:
+        id:
+          type: string
+        userId:
+          type: string
+        cartId:
+          type: string
+        token:
+          type: object
+          items:
+            $ref: "#/components/schemas/token"
+        camera:
+          type: object
+          items:
+            $ref: "#/components/schemas/camera"

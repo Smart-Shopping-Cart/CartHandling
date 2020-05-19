@@ -1,0 +1,4 @@
+org.springframework.boot.autoconfigure.EnableAutoConfiguration=\
+  api.config.ApiConfig,\
+  api.controllers.CartHandlingController,\
+  api.controllers.UserController
