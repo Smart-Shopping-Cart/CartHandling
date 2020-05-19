@@ -11,7 +11,7 @@
     <modules>
         <module>CartHandling-exe</module>
         <module>CartHandling-parent</module>
-        <module>CartHandling-Resource</module>
+        <module>CartHandling-resource</module>
         <module>CartHandling-service</module>
         <module>CartHandling-tests</module>
         <module>CartHandling-gateways</module>

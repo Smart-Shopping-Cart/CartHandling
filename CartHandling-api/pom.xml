@@ -6,7 +6,7 @@
         <artifactId>CartHandling-parent</artifactId>
         <groupId>CartHandling</groupId>
         <version>1.0-SNAPSHOT</version>
-        <relativePath>../CartHandling-parent</relativePath>
+        <relativePath>../CartHandling-parent/pom.xml</relativePath>
     </parent>
     <modelVersion>4.0.0</modelVersion>
     <artifactId>CartHandling-api</artifactId>

@@ -6,11 +6,11 @@
         <artifactId>CartHandling-parent</artifactId>
         <groupId>CartHandling</groupId>
         <version>1.0-SNAPSHOT</version>
-        <relativePath>../CartHandling-Parent</relativePath>
+        <relativePath>../CartHandling-parent/pom.xml</relativePath>
     </parent>
     <modelVersion>4.0.0</modelVersion>
     <name>${project.groupId}:${project.artifactId}</name>
-    <artifactId>CartHandling-Resource</artifactId>
+    <artifactId>CartHandling-resource</artifactId>
     <dependencies>
         <dependency>
             <groupId>CartHandling</groupId>
