@@ -1,0 +1,1 @@
+web: java -Dserver.port=$PORT -DMongoDB.password=$MONGO -Djwt.secret=$SECRET -Dmongodb.uri=$MONGO_URI $JAVA_OPTS -jar CartHandling-exe/target/*.jar
