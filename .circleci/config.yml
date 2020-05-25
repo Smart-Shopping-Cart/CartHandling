@@ -3,22 +3,15 @@ orbs:
   heroku: circleci/heroku@1.0.1
 version: 2.1
 jobs:
- herokuDeployTest:
-  parameters:
-    force:
-      default: true
-      description: >-
-        Whether or not to force the git push (i.e. `git push -f`). Defaults to
-        false.
-      type: boolean
-      
+ herokuDeployTest:    
   executor: heroku/default
   environment:
    HEROKU_APP_NAME: "cart-handling-test"
   steps:
    - checkout
    - heroku/install
-   - heroku/deploy-via-git
+   - heroku/deploy-via-git:
+      force: true
  herokuDeploy:
   executor: heroku/default
   environment:
