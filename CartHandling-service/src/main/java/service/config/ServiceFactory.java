@@ -6,19 +6,11 @@ import service.implement.SignUpService;
 import service.interfaces.ISignUpService;
 import service.mappers.IMapUser;
 import service.mappers.IMapUserImpl;
-import service.models.implement.dto.TokenDTO;
 import service.models.implement.dto.UserDTO;
-import service.models.interfaces.dto.ITokenDTO;
 import service.models.interfaces.dto.IUserDTO;
 
 @Configuration
 public class ServiceFactory {
-
-    @Bean
-    public ITokenDTO getTokenDTO(){
-        System.out.println("servicee");
-        return new TokenDTO();
-    }
 
     @Bean
     public IUserDTO getUserDTO(){return new UserDTO(); }

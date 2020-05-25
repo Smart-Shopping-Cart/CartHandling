@@ -7,6 +7,6 @@ import service.models.interfaces.dto.IUserDTO;
 
 @Mapper(uses = ServiceFactory.class)
 public interface IMapUser {
-    User mapUserDTOToEntity(IUserDTO token);
-    IUserDTO mapUserEntityToDTO(User token);
+    User mapUserDTOToEntity(IUserDTO userDTO);
+    IUserDTO mapUserEntityToDTO(User user);
 }

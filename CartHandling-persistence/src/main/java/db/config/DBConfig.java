@@ -52,7 +52,7 @@ public class DBConfig {
     IDBUserService getDBUserService(){return new DBUserService();}
 
     @Bean
-    IDBCarmeraService getDBCameraService(){return new DBCameraService();}
+    IDBCameraService getDBCameraService(){return new DBCameraService();}
 
     @Bean
     IDBCustomertService getDBCustomerService(){return new DBCustomerService();}

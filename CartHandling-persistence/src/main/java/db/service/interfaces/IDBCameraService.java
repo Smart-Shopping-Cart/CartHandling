@@ -2,7 +2,7 @@ package db.service.interfaces;
 
 import _generated_sources_openapi_model.Camera;
 
-public interface IDBCarmeraService {
+public interface IDBCameraService {
 
     Camera createCamera(Camera camera);
 
