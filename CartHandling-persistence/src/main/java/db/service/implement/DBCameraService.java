@@ -3,7 +3,7 @@ package db.service.implement;
 import _generated_sources_openapi_model.Camera;
 import com.mongodb.client.MongoCollection;
 import com.mongodb.client.model.FindOneAndReplaceOptions;
-import db.service.interfaces.IDBCarmeraService;
+import db.service.interfaces.IDBCameraService;
 import org.bson.types.ObjectId;
 
 import javax.inject.Inject;
@@ -11,7 +11,7 @@ import javax.inject.Inject;
 import static com.mongodb.client.model.Filters.eq;
 import static com.mongodb.client.model.ReturnDocument.AFTER;
 
-public class DBCameraService implements IDBCarmeraService {
+public class DBCameraService implements IDBCameraService {
 
     @Inject
     private MongoCollection<Camera> cameraTable;

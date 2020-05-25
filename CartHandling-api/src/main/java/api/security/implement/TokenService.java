@@ -17,6 +17,7 @@ import org.springframework.web.server.ResponseStatusException;
 import javax.inject.Inject;
 import java.text.SimpleDateFormat;
 import java.util.Date;
+import java.util.Objects;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
@@ -76,12 +77,14 @@ public class TokenService implements ITokenService {
         }
     }
     @Override
-    public String buildJwtToken(User user) {
-        if(StringUtils.isEmpty(idbuserService.getUser(user)))
+    public String buildJwtToken(User user)
+    {
+        User userFromDb=idbuserService.getUser(user);
+        if(Objects.isNull(userFromDb))
             throw new IllegalStateException("Could not Create JWT token: user doesnt exist");
         String token = Jwts.builder().signWith(SignatureAlgorithm.HS512, secret)
                 .setPayload(new ObjectMapper().createObjectNode()
-                        .put("userId", user.getId())
+                        .put("userId", userFromDb.getId())
                         .put("customerId", "")
                         .put("createDate", new Date().toString())
                         .put("shoppingDate", "")

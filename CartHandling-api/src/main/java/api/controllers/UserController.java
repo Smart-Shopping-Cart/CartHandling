@@ -32,8 +32,9 @@ public class UserController implements LoginApi, SignUpApi, LogoutApi, Applicati
     }
     @Override
     public ResponseEntity<String> login(User user) {
+        String token=tokenService.buildJwtToken(user);
         this.applicationContext.getBean(UserController.ILoginDelegate.class).execute(user);
-        return new ResponseEntity<String>(tokenService.buildJwtToken(user), HttpStatus.ACCEPTED);
+        return new ResponseEntity<String>(token, HttpStatus.ACCEPTED);
     }
     @Override
     public ResponseEntity<Void> logout(String authorization) {
