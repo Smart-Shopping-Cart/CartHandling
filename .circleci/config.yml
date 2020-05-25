@@ -4,6 +4,14 @@ orbs:
 version: 2.1
 jobs:
  herokuDeployTest:
+  parameters:
+    force:
+      default: true
+      description: >-
+        Whether or not to force the git push (i.e. `git push -f`). Defaults to
+        false.
+      type: boolean
+      
   executor: heroku/default
   environment:
    HEROKU_APP_NAME: "cart-handling-test"
