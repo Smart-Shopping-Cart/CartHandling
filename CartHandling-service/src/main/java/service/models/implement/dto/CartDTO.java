@@ -15,9 +15,7 @@ public class CartDTO implements ICartDTO
 {
 
     private String cartId;
-
     private List<Product> products = null;
-
     private String totalPrice;
     private String id;
 
@@ -48,6 +46,12 @@ public class CartDTO implements ICartDTO
         this.products.add(productsItem);
         return this;
     }
+@Override
+    public  ICartDTO removeProductsItem(Product productsItem)
+{
+    products.remove(productsItem);
+    return this;
+}
 @Override
     public List<Product> getProducts() {
         return products;

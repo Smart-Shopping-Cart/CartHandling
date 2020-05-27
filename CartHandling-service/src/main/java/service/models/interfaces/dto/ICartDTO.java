@@ -33,4 +33,6 @@ public interface ICartDTO {
     void setId(String id);
 
     String toIndentedString(Object o);
+
+    public  ICartDTO removeProductsItem(Product productsItem);
 }

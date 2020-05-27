@@ -70,6 +70,9 @@ public class ServiceFactory {
     public IMapCart getMapCart() {
         return new IMapCartImpl();
     }
+    @Bean
+    public IMapProduct getMapProduct() { return new IMapProductImpl() ; }
+
 }
 
 

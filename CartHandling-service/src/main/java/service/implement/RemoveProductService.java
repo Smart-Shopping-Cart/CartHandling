@@ -7,8 +7,10 @@ import db.service.interfaces.IDBShoppingCartService;
 import service.interfaces.IRemoveProductService;
 import service.mappers.IMapCart;
 import service.mappers.IMapCustomer;
+import service.mappers.IMapProduct;
 import service.models.interfaces.dto.ICartDTO;
 import service.models.interfaces.dto.ICustomerDTO;
+import service.models.interfaces.dto.IProductDTO;
 
 import javax.inject.Inject;
 
@@ -25,14 +27,17 @@ public class RemoveProductService implements IRemoveProductService
     IMapCustomer mapCustomer;
     @Inject
     IMapCart mapCart;
+    @Inject
+    IMapProduct mapProduct;
+
 
     @Override
     public void removeProduct(String productName, String cameraId)
     {
         ICustomerDTO customerDTO= mapCustomer.mapCustomerEntityToDTO(idbCustomertService.getCustomerByCameraID(cameraId));
         ICartDTO cartDTO=mapCart.mapCartEntityToDTO(idbShoppingCartService.getCart(customerDTO.getCartId()));
-        Product product=idbProductService.getProduct(productName);
-        cartDTO.addProductsItem(product);
+        IProductDTO productDTO=mapProduct.mapProductEntityToDTO(idbProductService.getProduct(productName));
+        cartDTO.removeProductsItem(mapProduct.mapProductDTOToEntity(productDTO));
         idbShoppingCartService.updateCart(mapCart.mapCartDTOToEntity(cartDTO));
 
     }
