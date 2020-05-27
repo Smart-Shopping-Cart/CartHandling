@@ -26,6 +26,19 @@ public class DBCustomerService implements IDBCustomertService {
     public Customer getCustomer(String id) {
         return customerTable.find(eq("_id", new ObjectId(id).toHexString())).first();
     }
+    @Override
+    public Customer getCustomerByCameraID(String cameraid)
+    {
+        Customer customer=customerTable.find(eq("camera.id",cameraid)).first();
+        if(customer==null)
+        {
+            throw new IllegalStateException("camera with this id dosent exist");
+        }
+        else {
+            return (customer);
+        }
+    }
+
 
     @Override
     public long deleteCustomer(String id) {

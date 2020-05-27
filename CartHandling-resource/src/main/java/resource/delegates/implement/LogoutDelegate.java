@@ -5,9 +5,7 @@ import org.springframework.http.ResponseEntity;
 
 public class LogoutDelegate implements ILogoutDelegate {
     @Override
-    public ResponseEntity<Void> execute(String authorization)
-    {
-        /*todo:*/
+    public ResponseEntity<Void> execute(String authorization) {
         return null;
     }
 }

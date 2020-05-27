@@ -39,4 +39,5 @@ public class ResourceConfig {
     IRemoveProductDelegate getRemoveProductDelegate(){return new RemoveProductDelegate();}
     @Bean
     IUnBindDelegate getUnBindDelegate(){return new UnBindDelegate();}
+
 }

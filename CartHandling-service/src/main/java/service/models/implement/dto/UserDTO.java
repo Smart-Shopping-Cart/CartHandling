@@ -7,11 +7,8 @@ import java.util.Objects;
 public class UserDTO implements IUserDTO {
 
     private String name;
-
     private String password;
-
     private String id;
-
     @Override
     public String getName() {
         return name;
@@ -21,7 +18,6 @@ public class UserDTO implements IUserDTO {
         this.name = name;
     }
     @Override
-
     public IUserDTO password(String password) {
         this.password = password;
         return this;
