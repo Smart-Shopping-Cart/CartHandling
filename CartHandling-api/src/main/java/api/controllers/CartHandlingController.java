@@ -95,6 +95,6 @@ public class CartHandlingController implements AddProductApi, BindApi, GetProduc
         ResponseEntity<Void> execute(String cameraId, String productId);
     }
     public interface IGetProductDelegate{
-        ResponseEntity<Product> execute(String productId);
+        Product execute(String productId);
     }
 }

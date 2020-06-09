@@ -32,7 +32,7 @@ public class RemoveProductService implements IRemoveProductService
 
 
     @Override
-    public void removeProduct(String productName, String cameraId)
+    public void removeProduct(String cameraId, String productName)
     {
         ICustomerDTO customerDTO= mapCustomer.mapCustomerEntityToDTO(idbCustomertService.getCustomerByCameraID(cameraId));
         ICartDTO cartDTO=mapCart.mapCartEntityToDTO(idbShoppingCartService.getCart(customerDTO.getCartId()));

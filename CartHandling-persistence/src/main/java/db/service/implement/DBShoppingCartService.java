@@ -23,6 +23,13 @@ public class DBShoppingCartService implements IDBShoppingCartService {
         shoppingCartTable.insertOne(cart);
         return cart;
     }
+    @Override
+    public Cart createNewCart(String cartid){
+        Cart cart=new Cart();
+        cart.setId(new ObjectId().toHexString());
+        shoppingCartTable.insertOne(cart);
+        return cart;
+    }
 
     @Override
     public Cart getCart(String id) {
