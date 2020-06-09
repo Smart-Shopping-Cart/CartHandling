@@ -1,0 +1,83 @@
+openapi: 3.0.0
+info:
+  description: This is an API for the recognitionn's server
+  version: "1.0"
+  title: Recognition
+  license:
+    name: Apache 2.0
+    url: http://www.apache.org/licenses/LICENSE-2.0.html
+tags:
+  - name: Camera
+paths:
+  /addCamera:
+    post:
+      tags:
+        - Camera
+      summary: add new camera
+      operationId: addCamera
+      description: >
+        by passing camera ip the server start to listen to it and return the id
+        of the camera that added.
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/camera"
+        required: true
+      responses:
+        "203":
+          description: add camera with id
+        "400":
+          description: bad input parameter
+  /getAllCameras:
+    get:
+      tags:
+        - Camera
+      summary: get Cameras
+      operationId: getCameras
+      description: |
+        By passing in the appropriate options, you can get all cameras from DB
+      responses:
+        "200":
+          description: array of cameras
+          content:
+            "*/*":
+              schema:
+                type: array
+                items:
+                  $ref: "#/components/schemas/camera"
+        "400":
+          description: bad input parameter
+  /removeCamera/{id}:
+    delete:
+      tags:
+        - Camera
+      summary: remove Camera
+      operationId: RemoveCamera
+      description: |
+        By passing in the appropriate options, you can delete Camera from DB
+      parameters:
+        - in: path
+          required: true
+          name: id
+          schema:
+            type: string
+      responses:
+        "200":
+          description: successful remove this camera
+        "400":
+          description: unsuccessful  input parameter
+servers:
+  - url: https://recognitionn.herokuapp.com
+components:
+  schemas:
+    camera:
+      type: object
+      properties:
+        Id:
+          type: string
+        ip:
+          type: string
+
+
+
