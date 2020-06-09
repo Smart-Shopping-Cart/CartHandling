@@ -2,22 +2,22 @@ package resource.delegates.implement;
 
 import _generated_sources_openapi_model.Product;
 import api.controllers.CartHandlingController.IGetAllProductsDelegate;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import service.interfaces.IGetAlllProductService;
+import service.interfaces.IGetAllProductService;
 
 import javax.inject.Inject;
 import java.util.List;
 
 public class GetAllProductsDelegate implements IGetAllProductsDelegate {
     @Inject
-    IGetAlllProductService getAlllProductService;
+    IGetAllProductService getAlllProductService;
 
 
 
     @Override
     public ResponseEntity<List<Product>> execute(String customerID)
     {
-        getAlllProductService.getAllProduct();
-        return null;
+        return new ResponseEntity<List<Product>>(getAlllProductService.getAllProduct(), HttpStatus.OK);
     }
 }

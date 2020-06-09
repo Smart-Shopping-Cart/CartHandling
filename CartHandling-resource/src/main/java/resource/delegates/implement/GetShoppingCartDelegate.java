@@ -2,6 +2,7 @@ package resource.delegates.implement;
 
 import _generated_sources_openapi_model.Cart;
 import api.controllers.CartHandlingController.IGetShoppingCartDelegate;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import service.interfaces.IGetShoppingCartService;
 import service.mappers.IMapCart;
@@ -18,7 +19,6 @@ public class GetShoppingCartDelegate implements IGetShoppingCartDelegate {
     @Override
     public ResponseEntity<Cart> execute(String customerID)
     {
-        mapCart.mapCartDTOToEntity(getShoppingCartService.getShoppingCart(customerID));
-        return null;
+        return new ResponseEntity<Cart>(mapCart.mapCartDTOToEntity(getShoppingCartService.getShoppingCart(customerID)), HttpStatus.OK);
     }
 }

@@ -2,12 +2,12 @@ package service.implement;
 
 import _generated_sources_openapi_model.Product;
 import db.service.interfaces.IDBProductService;
-import service.interfaces.IGetAlllProductService;
+import service.interfaces.IGetAllProductService;
 
 import javax.inject.Inject;
 import java.util.List;
 
-public class GetAlllProductService implements IGetAlllProductService
+public class GetAllProductService implements IGetAllProductService
 {
  @Inject
     IDBProductService productService;

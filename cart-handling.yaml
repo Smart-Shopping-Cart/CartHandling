@@ -134,10 +134,6 @@ paths:
       responses:
         "201":
           description: binding successful
-          content:
-            "*/*":
-              schema:
-                type: string
         "400":
           description: binding unsuccessful
   /unbind:
@@ -156,13 +152,9 @@ paths:
       responses:
         "200":
           description: unbinding successful
-          content:
-            "*/*":
-              schema:
-                type: string
         "400":
           description: unbinding unsuccessful
-  "/addProduct/{cameraId}":
+  "/addProduct/{cameraId}/{productId}":
     post:
       tags:
         - Cart
@@ -186,7 +178,7 @@ paths:
           description: product add successful
         "400":
           description: product add unsuccessful
-  "/removeProduct/{cameraId}":
+  "/removeProduct/{cameraId}/{productId}":
     post:
       tags:
         - Cart

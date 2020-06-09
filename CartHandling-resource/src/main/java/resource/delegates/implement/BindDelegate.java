@@ -12,7 +12,7 @@ public class BindDelegate implements IBindDelegate {
     IBindService iBindService;
 
    @Override
-    public ResponseEntity<String> execute(String cameraIp, String userID)
+    public ResponseEntity<Void> execute(String cameraIp, String userID)
     {
         iBindService.bind(cameraIp,userID);
         return null;
