@@ -9,5 +9,7 @@ public interface ITokenService {
 
     String buildJwtToken(User user);
 
-    String BindToken(String token, Customer customer);
+
+
+    String BindToken(String tokenString, String customerId);
 }

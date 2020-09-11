@@ -18,6 +18,6 @@ public class GetAllProductsDelegate implements IGetAllProductsDelegate {
     @Override
     public ResponseEntity<List<Product>> execute(String customerID)
     {
-        return new ResponseEntity<List<Product>>(getAlllProductService.getAllProduct(), HttpStatus.OK);
+        return new ResponseEntity<>(getAlllProductService.getAllProduct(), HttpStatus.OK);
     }
 }

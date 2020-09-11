@@ -6,6 +6,10 @@ import _generated_sources_openapi_model.Token;
 import java.util.List;
 
 public interface ICustomerDTO {
+
+
+    ICustomerDTO id(String id);
+
     String getId();
 
     void setId(String id);
@@ -22,21 +26,9 @@ public interface ICustomerDTO {
 
     void setCartId(String cartId);
 
-    ICustomerDTO token(List<Token> token);
+    ICustomerDTO camera(String camera);
 
-    ICustomerDTO addTokenItem(Token tokenItem);
+    String getCamera();
 
-    List<Token> getToken();
-
-    void setToken(List<Token> token);
-
-    ICustomerDTO camera(List<Camera> camera);
-
-    ICustomerDTO addCameraItem(Camera cameraItem);
-
-    List<Camera> getCamera();
-
-    void setCamera(List<Camera> camera);
-
-    String toIndentedString(Object o);
+    void setCamera(String camera);
 }

@@ -1,6 +1,7 @@
 package resource.delegates.implement;
 
 import api.controllers.CartHandlingController.IBindDelegate;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import service.interfaces.IBindService;
 
@@ -12,9 +13,9 @@ public class BindDelegate implements IBindDelegate {
     IBindService iBindService;
 
    @Override
-    public ResponseEntity<Void> execute(String cameraIp, String userID)
+    public String execute(String cameraIp, String userID)
     {
-        iBindService.bind(cameraIp,userID);
-        return null;
+        return iBindService.bind(cameraIp,userID);
+
     }
 }

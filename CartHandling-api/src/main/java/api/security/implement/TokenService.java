@@ -17,6 +17,7 @@ import org.springframework.web.server.ResponseStatusException;
 import javax.inject.Inject;
 import java.text.SimpleDateFormat;
 import java.util.Date;
+import java.util.Locale;
 import java.util.Objects;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -38,8 +39,8 @@ public class TokenService implements ITokenService {
         if(StringUtils.isEmpty(idbuserService.getUser(token.getUserId())))
             throw new IllegalStateException("Could not Create JWT token: user doesnt exist");
         try {
-            tokenDate = new SimpleDateFormat().parse(token.getCreationDate());
-            tokenDate.setTime(60*60*1000*3);
+            tokenDate = new SimpleDateFormat("EEE MMM dd HH:mm:ss zzz yyyy", Locale.ENGLISH).parse(token.getCreationDate());
+            tokenDate.setTime(tokenDate.getTime()+60*60*1000*3);
         }catch (Exception e){
             Logger.getAnonymousLogger().log(Level.WARNING,"invalid date at token verification");
         }
@@ -93,12 +94,12 @@ public class TokenService implements ITokenService {
         return token;
     }
     @Override
-    public String BindToken(String tokenString, Customer customer) {
+    public String BindToken(String tokenString, String customerId) {
         Token token = verifyJwt(tokenString);
         tokenString = Jwts.builder().signWith(SignatureAlgorithm.HS512, secret)
                 .setPayload(new ObjectMapper().createObjectNode()
-                        .put("userId", customer.getUserId())
-                        .put("customerId",customer.getId())
+                        .put("userId",token.getUserId())
+                        .put("customerId",customerId)
                         .put("createDate", token.getCreationDate())
                         .put("shoppingDate", new Date().toString())
                         .toString())
