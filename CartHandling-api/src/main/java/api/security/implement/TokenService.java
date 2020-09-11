@@ -94,7 +94,8 @@ public class TokenService implements ITokenService {
         return token;
     }
     @Override
-    public String BindToken(String tokenString, String customerId) {
+    public String BindToken(String authorization, String customerId) {
+        String tokenString = authorization.replaceFirst("Bearer ", "");
         Token token = verifyJwt(tokenString);
         tokenString = Jwts.builder().signWith(SignatureAlgorithm.HS512, secret)
                 .setPayload(new ObjectMapper().createObjectNode()
