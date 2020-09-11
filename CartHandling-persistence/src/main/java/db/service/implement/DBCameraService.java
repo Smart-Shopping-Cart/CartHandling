@@ -22,6 +22,13 @@ public class DBCameraService implements IDBCameraService {
         cameraTable.insertOne(camera);
         return camera;
     }
+    public Camera createCamera(String cameraip){
+        Camera camera=new Camera();
+        camera.setIp(cameraip);
+        camera.setId(new ObjectId().toHexString());
+        cameraTable.insertOne(camera);
+        return camera;
+    }
 
     @Override
     public Camera getCamera(String id) {

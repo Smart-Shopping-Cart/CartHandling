@@ -43,7 +43,7 @@ public class CartHandlingController implements AddProductApi, BindApi, GetProduc
     }
 
     @Override
-    public ResponseEntity<String> bind(String cameraIp, String authorization) {
+    public ResponseEntity<Void> bind(String cameraIp, String authorization) {
         Token token = tokenService.verifyAuthenticationHeader(authorization);
         return this.applicationContext.getBean(CartHandlingController.IBindDelegate.class).execute(cameraIp,token.getUserId());
     }
@@ -66,7 +66,7 @@ public class CartHandlingController implements AddProductApi, BindApi, GetProduc
     }
 
     @Override
-    public ResponseEntity<String> unbind(String authorization) {
+    public ResponseEntity<Void> unbind(String authorization) {
         Token token = tokenService.verifyAuthenticationHeader(authorization);
         return this.applicationContext.getBean(CartHandlingController.IUnBindDelegate.class).execute(token.getCustomerId());
     }
@@ -77,10 +77,10 @@ public class CartHandlingController implements AddProductApi, BindApi, GetProduc
     }
 
     public interface IBindDelegate{
-        ResponseEntity<String> execute(String cameraIp ,String userID);
+        ResponseEntity<Void> execute(String cameraIp ,String userID);
     }
     public interface IUnBindDelegate{
-        ResponseEntity<String> execute(String customerID);
+        ResponseEntity<Void> execute(String customerID);
     }
     public interface IGetAllProductsDelegate{
         ResponseEntity<List<Product>> execute(String customerID);

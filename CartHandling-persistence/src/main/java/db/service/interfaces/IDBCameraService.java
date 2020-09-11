@@ -11,4 +11,7 @@ public interface IDBCameraService {
     long deleteCamera(String id);
 
     Camera updateCamera(Camera camera);
-}
+
+    Camera createCamera(String cameraip);
+
+    }

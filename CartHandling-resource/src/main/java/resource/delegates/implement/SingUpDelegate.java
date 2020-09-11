@@ -2,7 +2,6 @@ package resource.delegates.implement;
 
 import _generated_sources_openapi_model.User;
 import api.controllers.UserController;
-import db.service.interfaces.IDBUserService;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.ResponseStatus;
@@ -12,9 +11,6 @@ import service.interfaces.ISignUpService;
 import javax.inject.Inject;
 
 public class SingUpDelegate implements UserController.ISignUpDelegate {
-
-    @Inject
-    IDBUserService idbuserService;
 
     @Inject
     ISignUpService signUpService;

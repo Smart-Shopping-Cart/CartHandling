@@ -10,4 +10,7 @@ public interface IDBCustomertService {
     long deleteCustomer(String id);
 
     Customer updateCustomer(Customer customer);
+
+    Customer getCustomerByCameraID(String cameraid);
+
 }

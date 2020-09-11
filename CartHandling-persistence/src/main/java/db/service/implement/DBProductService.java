@@ -1,12 +1,16 @@
 package db.service.implement;
 
 import _generated_sources_openapi_model.Product;
+import com.mongodb.Function;
 import com.mongodb.client.MongoCollection;
 import com.mongodb.client.model.FindOneAndReplaceOptions;
 import db.service.interfaces.IDBProductService;
 import org.bson.types.ObjectId;
 
 import javax.inject.Inject;
+
+import java.util.ArrayList;
+import java.util.List;
 
 import static com.mongodb.client.model.Filters.eq;
 import static com.mongodb.client.model.ReturnDocument.AFTER;
@@ -15,6 +19,12 @@ public class DBProductService implements IDBProductService {
 
     @Inject
     private MongoCollection<Product> productTable;
+
+    @Override
+    public List<Product> getAllProducts() {
+        return productTable.find().into(new ArrayList<Product>());
+    }
+
 
     @Override
     public Product createProduct(Product product){

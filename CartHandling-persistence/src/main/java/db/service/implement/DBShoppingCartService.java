@@ -1,6 +1,7 @@
 package db.service.implement;
 
 import _generated_sources_openapi_model.Cart;
+import _generated_sources_openapi_model.Product;
 import com.mongodb.client.MongoCollection;
 import com.mongodb.client.model.FindOneAndReplaceOptions;
 import db.service.interfaces.IDBShoppingCartService;
@@ -22,6 +23,13 @@ public class DBShoppingCartService implements IDBShoppingCartService {
         shoppingCartTable.insertOne(cart);
         return cart;
     }
+    @Override
+    public Cart createNewCart(String cartid){
+        Cart cart=new Cart();
+        cart.setId(new ObjectId().toHexString());
+        shoppingCartTable.insertOne(cart);
+        return cart;
+    }
 
     @Override
     public Cart getCart(String id) {
@@ -34,8 +42,18 @@ public class DBShoppingCartService implements IDBShoppingCartService {
     }
 
     @Override
+
     public Cart updateCart(Cart cart) {
         FindOneAndReplaceOptions options = new FindOneAndReplaceOptions().returnDocument(AFTER);
         return shoppingCartTable.findOneAndReplace(eq("_id", cart.getId()), cart, options);
     }
+
+    @Override
+    public void addProduct (String cartID, Product product)
+    {
+        Cart cart=getCart(cartID);
+        cart.addProductsItem(product);
+        updateCart(cart);
+    }
+
 }
