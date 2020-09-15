@@ -23,8 +23,6 @@ public class GetShoppingCartService implements IGetShoppingCartService {
     @Override
     public ICartDTO getShoppingCart(String customerID)
     {
-
-
         ICustomerDTO customerDTO= mapCustomer.mapCustomerEntityToDTO(idbCustomertService.getCustomer(customerID));
         ICartDTO cartDTO=mapCart.mapCartEntityToDTO(idbShoppingCartService.getCart(customerDTO.getCartId()));
         return cartDTO;

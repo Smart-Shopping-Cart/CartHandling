@@ -36,6 +36,10 @@ public class DBCameraService implements IDBCameraService {
     }
 
     @Override
+    public Camera getCameraByIp(String ip) {
+        return cameraTable.find(eq("ip", ip)).first();}
+
+    @Override
     public long deleteCamera(String id) {
         return cameraTable.deleteOne(eq("_id", new ObjectId(id).toHexString())).getDeletedCount();
     }

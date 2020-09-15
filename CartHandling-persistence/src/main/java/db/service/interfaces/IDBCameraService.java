@@ -14,4 +14,5 @@ public interface IDBCameraService {
 
     Camera createCamera(String cameraip);
 
-    }
+    Camera getCameraByIp(String ip);
+}

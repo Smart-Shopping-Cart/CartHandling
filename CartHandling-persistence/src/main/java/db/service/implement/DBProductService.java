@@ -1,14 +1,12 @@
 package db.service.implement;
 
 import _generated_sources_openapi_model.Product;
-import com.mongodb.Function;
 import com.mongodb.client.MongoCollection;
 import com.mongodb.client.model.FindOneAndReplaceOptions;
 import db.service.interfaces.IDBProductService;
 import org.bson.types.ObjectId;
 
 import javax.inject.Inject;
-
 import java.util.ArrayList;
 import java.util.List;
 
@@ -36,6 +34,11 @@ public class DBProductService implements IDBProductService {
     @Override
     public Product getProduct(String id) {
         return productTable.find(eq("_id", new ObjectId(id).toHexString())).first();
+    }
+
+    @Override
+    public Product getProductByName(String productName) {
+        return productTable.find(eq("name", productName)).first();
     }
 
     @Override
