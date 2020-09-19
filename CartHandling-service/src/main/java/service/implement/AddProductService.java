@@ -37,8 +37,8 @@ public class AddProductService implements IAddProductService
 
 
     @Override
-    public void addProduct(String cameraIp,String productName) {
-        ICameraDTO cameraDTO = mapCamera.mapCameraEntityToDTO(idbCameraService.getCameraByIp(cameraIp));
+    public void addProduct(String cameraId,String productName) {
+        ICameraDTO cameraDTO = mapCamera.mapCameraEntityToDTO(idbCameraService.getCamera(cameraId));
         ICustomerDTO customerDTO = mapCustomer.mapCustomerEntityToDTO(idbCustomertService.getCustomerByCameraID(cameraDTO.getId()));
         ICartDTO cartDTO = mapCart.mapCartEntityToDTO(idbShoppingCartService.getCart(customerDTO.getCartId()));
         IProductDTO productDTO = mapProduct.mapProductEntityToDTO(idbProductService.getProductByName(productName));

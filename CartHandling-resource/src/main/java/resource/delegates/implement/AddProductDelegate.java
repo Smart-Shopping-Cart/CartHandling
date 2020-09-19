@@ -15,9 +15,9 @@ import javax.inject.Inject;
 
         @Override
         @ResponseStatus(HttpStatus.OK)
-        public ResponseEntity<Void> execute(String cameraIp, String productName)
+        public ResponseEntity<Void> execute(String cameraId, String productName)
         {
-            addProductService.addProduct(cameraIp,productName);
+            addProductService.addProduct(cameraId,productName);
             return null;
         }
 }
