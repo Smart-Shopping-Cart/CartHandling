@@ -14,8 +14,8 @@ public class RecognitionGateWay {
         cameraApi.addCamera(camera);
     }
 
-    public void removeCamera(String cameraIp){
-        cameraApi.removeCamera(cameraIp);
+    public void removeCamera(String cameraId){
+        cameraApi.removeCamera(cameraId);
     }
 
     public List<Camera> getAllCameras(){

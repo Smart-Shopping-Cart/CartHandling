@@ -284,8 +284,6 @@ components:
     cart:
       type: object
       properties:
-        cartId:
-          type: string
         products:
           type: array
           items:

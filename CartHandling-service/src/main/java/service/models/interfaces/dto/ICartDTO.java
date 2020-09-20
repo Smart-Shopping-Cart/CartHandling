@@ -1,16 +1,10 @@
 package service.models.interfaces.dto;
 
 import _generated_sources_openapi_model.Product;
-import io.swagger.annotations.ApiModelProperty;
 
 import java.util.List;
 
 public interface ICartDTO {
-    ICartDTO cartId(String cartId);
-
-    String getCartId();
-
-    void setCartId(String cartId);
 
     ICartDTO products(List<Product> products);
 

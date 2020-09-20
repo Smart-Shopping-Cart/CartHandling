@@ -33,7 +33,10 @@ public class ServiceFactory {
     public IBindService getBindService() {
         return new BindService();
     }
-
+    @Bean
+    public IUnBindService getUnBindService(){
+        return new UnBindService();
+    }
     @Bean
     public IGetAllProductService getIGetAllProductService() {
         return new GetAllProductService();

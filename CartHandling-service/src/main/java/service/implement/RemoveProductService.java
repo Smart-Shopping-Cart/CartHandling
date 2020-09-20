@@ -38,7 +38,6 @@ public class RemoveProductService implements IRemoveProductService
         IProductDTO productDTO=mapProduct.mapProductEntityToDTO(idbProductService.getProductByName(productName));
         cartDTO.removeProductsItem(mapProduct.mapProductDTOToEntity(productDTO));
         idbShoppingCartService.updateCart(mapCart.mapCartDTOToEntity(cartDTO));
-
     }
 }
 
