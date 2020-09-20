@@ -80,7 +80,7 @@ paths:
         "200":
           description: successful
           content:
-            "*/*":
+            application/json:
               schema:
                 type: array
                 items:
@@ -108,7 +108,7 @@ paths:
         "200":
           description: The product exist in the specific cart
           content:
-            "*/*":
+            application/json:
               schema:
                 $ref: "#/components/schemas/product"
         "400":
@@ -134,6 +134,10 @@ paths:
       responses:
         "201":
           description: binding successful
+          content:
+            text/plain:
+              schema:
+                type: string
         "400":
           description: binding unsuccessful
   /unbind:
@@ -275,11 +279,11 @@ components:
           type: string
         price:
           type: string
+        name:
+          type: string
     cart:
       type: object
       properties:
-        cartId:
-          type: string
         products:
           type: array
           items:
@@ -297,11 +301,5 @@ components:
           type: string
         cartId:
           type: string
-        token:
-          type: object
-          items:
-            $ref: "#/components/schemas/token"
         camera:
-          type: object
-          items:
-            $ref: "#/components/schemas/camera"
+          type: string

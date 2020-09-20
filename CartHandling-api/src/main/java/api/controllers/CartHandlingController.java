@@ -9,6 +9,7 @@ import org.springframework.beans.BeansException;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.ApplicationContextAware;
 import org.springframework.context.annotation.Scope;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.context.request.NativeWebRequest;
@@ -43,9 +44,10 @@ public class CartHandlingController implements AddProductApi, BindApi, GetProduc
     }
 
     @Override
-    public ResponseEntity<Void> bind(String cameraIp, String authorization) {
+    public ResponseEntity<String> bind(String cameraIp, String authorization) {
         Token token = tokenService.verifyAuthenticationHeader(authorization);
-        return this.applicationContext.getBean(CartHandlingController.IBindDelegate.class).execute(cameraIp,token.getUserId());
+        String custId=this.applicationContext.getBean(CartHandlingController.IBindDelegate.class).execute(cameraIp,token.getUserId());
+        return new ResponseEntity<>(tokenService.BindToken(authorization ,custId), HttpStatus.OK);
     }
 
     @Override
@@ -77,7 +79,7 @@ public class CartHandlingController implements AddProductApi, BindApi, GetProduc
     }
 
     public interface IBindDelegate{
-        ResponseEntity<Void> execute(String cameraIp ,String userID);
+        String execute(String cameraIp ,String userID);
     }
     public interface IUnBindDelegate{
         ResponseEntity<Void> execute(String customerID);

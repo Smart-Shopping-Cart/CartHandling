@@ -31,7 +31,7 @@ public class DBCustomerService implements IDBCustomertService {
     @Override
     public Customer getCustomerByCameraID(String cameraid)
     {
-        Customer customer=customerTable.find(eq("camera.id",cameraid)).first();
+        Customer customer=customerTable.find(eq("camera",cameraid)).first();
         if(customer==null)
         {
             throw new IllegalStateException("camera with this id dosent exist");

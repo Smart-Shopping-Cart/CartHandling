@@ -7,7 +7,7 @@ public interface IDBShoppingCartService {
 
     Cart createCart(Cart cart);
 
-    Cart createNewCart(String cartid);
+    Cart createNewCart();
 
     Cart getCart(String id);
 

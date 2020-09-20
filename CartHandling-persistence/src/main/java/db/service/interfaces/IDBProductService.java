@@ -11,6 +11,8 @@ public interface IDBProductService {
 
     Product getProduct(String id);
 
+    Product getProductByName(String productName);
+
     long deleteProduct(String id);
 
     Product updateProduct(Product product);

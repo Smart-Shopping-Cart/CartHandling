@@ -24,7 +24,7 @@ public class DBShoppingCartService implements IDBShoppingCartService {
         return cart;
     }
     @Override
-    public Cart createNewCart(String cartid){
+    public Cart createNewCart(){
         Cart cart=new Cart();
         cart.setId(new ObjectId().toHexString());
         shoppingCartTable.insertOne(cart);

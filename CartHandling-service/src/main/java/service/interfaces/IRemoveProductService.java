@@ -3,5 +3,5 @@ package service.interfaces;
 public interface IRemoveProductService
 {
 
-    void removeProduct(String productName,String cameraId);
+    void removeProduct(String  cameraId ,String productName);
 }

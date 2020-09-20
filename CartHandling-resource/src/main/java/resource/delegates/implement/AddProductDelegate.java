@@ -5,9 +5,6 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.ResponseStatus;
 import service.interfaces.IAddProductService;
-import service.interfaces.ISignUpService;
-import service.mappers.IMapProduct;
-import service.mappers.IMapUser;
 
 import javax.inject.Inject;
 
@@ -18,9 +15,9 @@ import javax.inject.Inject;
 
         @Override
         @ResponseStatus(HttpStatus.OK)
-        public ResponseEntity<Void> execute(String cameraId, String productId)
+        public ResponseEntity<Void> execute(String cameraId, String productName)
         {
-            addProductService.addProduct(cameraId,productId);
+            addProductService.addProduct(cameraId,productName);
             return null;
         }
 }

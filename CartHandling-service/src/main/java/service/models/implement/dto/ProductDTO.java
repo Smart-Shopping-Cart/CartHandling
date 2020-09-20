@@ -1,50 +1,57 @@
 package service.models.implement.dto;
 
-import _generated_sources_openapi_model.Product;
-import com.fasterxml.jackson.annotation.JsonProperty;
-import io.swagger.annotations.ApiModelProperty;
 import service.models.interfaces.dto.IProductDTO;
 
 import java.util.Objects;
 
 public class ProductDTO implements IProductDTO
 {
-
     private String id;
     private String price;
+    private String name;
 
-    @Override
-    public ProductDTO id(String id) {
+    public IProductDTO id(String id) {
         this.id = id;
         return this;
     }
-    @Override
 
+    @Override
     public String getId() {
         return id;
     }
-    @Override
 
+    @Override
     public void setId(String id) {
         this.id = id;
     }
-    @Override
 
-    public ProductDTO price(String price) {
+    public IProductDTO price(String price) {
         this.price = price;
         return this;
     }
     @Override
-
     public String getPrice() {
         return price;
     }
-    @Override
 
+    @Override
     public void setPrice(String price) {
         this.price = price;
     }
 
+    public IProductDTO name(String name) {
+        this.name = name;
+        return this;
+    }
+    @Override
+    public String getName() {
+        return name;
+    }
+
+    @Override
+    public void setName(String name) {
+        this.name = name;
+    }
 
     @Override
     public boolean equals(java.lang.Object o) {
@@ -56,12 +63,13 @@ public class ProductDTO implements IProductDTO
         }
         ProductDTO product = (ProductDTO) o;
         return Objects.equals(this.id, product.id) &&
-                Objects.equals(this.price, product.price);
+                Objects.equals(this.price, product.price) &&
+                Objects.equals(this.name, product.name);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(id, price);
+        return Objects.hash(id, price, name);
     }
 
     @Override
@@ -71,11 +79,12 @@ public class ProductDTO implements IProductDTO
 
         sb.append("    id: ").append(toIndentedString(id)).append("\n");
         sb.append("    price: ").append(toIndentedString(price)).append("\n");
+        sb.append("    name: ").append(toIndentedString(name)).append("\n");
         sb.append("}");
         return sb.toString();
     }
-    @Override
-    public String toIndentedString(java.lang.Object o) {
+
+    private String toIndentedString(java.lang.Object o) {
         if (o == null) {
             return "null";
         }

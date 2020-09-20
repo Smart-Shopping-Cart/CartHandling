@@ -1,6 +1,5 @@
 package service.implement;
 
-import _generated_sources_openapi_model.Product;
 import db.service.interfaces.IDBCustomertService;
 import db.service.interfaces.IDBProductService;
 import db.service.interfaces.IDBShoppingCartService;
@@ -36,10 +35,9 @@ public class RemoveProductService implements IRemoveProductService
     {
         ICustomerDTO customerDTO= mapCustomer.mapCustomerEntityToDTO(idbCustomertService.getCustomerByCameraID(cameraId));
         ICartDTO cartDTO=mapCart.mapCartEntityToDTO(idbShoppingCartService.getCart(customerDTO.getCartId()));
-        IProductDTO productDTO=mapProduct.mapProductEntityToDTO(idbProductService.getProduct(productName));
+        IProductDTO productDTO=mapProduct.mapProductEntityToDTO(idbProductService.getProductByName(productName));
         cartDTO.removeProductsItem(mapProduct.mapProductDTOToEntity(productDTO));
         idbShoppingCartService.updateCart(mapCart.mapCartDTOToEntity(cartDTO));
-
     }
 }
 

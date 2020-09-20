@@ -2,5 +2,5 @@ package service.interfaces;
 
 public interface IBindService
 {
-    void bind(String cameraIp, String userID) ;
+    String bind(String cameraIp, String userID) ;
 }

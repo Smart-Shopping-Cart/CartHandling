@@ -2,6 +2,6 @@ package service.interfaces;
 
 public interface IAddProductService
 {
-    void addProduct(String productName,String cameraId);
+    void addProduct(String cameraId,String productName );
 
 }
