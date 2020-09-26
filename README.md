@@ -1,4 +1,4 @@
-# SmartCart #
+# CartHandling #
 
 this document describe our CartHandling server.
 
