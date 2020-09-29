@@ -1,14 +1,20 @@
 package tests.mappers;
 
 import _generated_sources_openapi_model.*;
+import db.service.interfaces.IDBCameraService;
 import org.junit.Assert;
+import org.junit.Before;
 import org.junit.Test;
+import org.springframework.boot.test.mock.mockito.MockBean;
 import service.mappers.*;
 import service.models.interfaces.dto.*;
 import tests.base.BaseTests;
 
 import javax.inject.Inject;
 import java.net.URL;
+
+import static org.mockito.ArgumentMatchers.any;
+import static org.mockito.Mockito.when;
 
 public class MapStructTests extends BaseTests {
 
@@ -29,14 +35,15 @@ public class MapStructTests extends BaseTests {
 
 //    @MockBean
 //    IDBCameraService DBcameraService;
-
+//
 //    @Before
-//    public void setup(){
+//    public void setupCamraDetails(){
 //        Camera camera = new Camera();
 //        camera.setId("0");
 //        camera.setIp("0");
 //        when(DBcameraService.createCamera(any(String.class))).thenReturn(camera);
 //    }
+
 
 
     @Test
