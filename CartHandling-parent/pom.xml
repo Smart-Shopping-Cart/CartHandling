@@ -27,7 +27,7 @@
         <feign.form.version>3.8.0</feign.form.version>
         <feign.jackson.version>8.18.0</feign.jackson.version>
         <feign.slf4j.version>8.18.0</feign.slf4j.version>
-        <openapi.generator.maven.plugin.version>4.3.1</openapi.generator.maven.plugin.version>
+        <openapi.generator.maven.plugin.version>5.1.0</openapi.generator.maven.plugin.version>
         <maven.compiler.version>3.5.1</maven.compiler.version>
         <jjwt.version>0.6.0</jjwt.version>
         <maven.dependency.plugin.version>3.1.2</maven.dependency.plugin.version>
